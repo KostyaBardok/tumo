@@ -1,21 +1,15 @@
-import fs from 'fs'
-import express from 'express'
+import express from 'express';
+import { appendFileSync } from 'fs';
+const app = express();
 
-const app = express()
+app.use(express.static('.'));
+app.use(express.json());
 
-app.use(express.static('.'))
-app.use(express.json())
-
-
-app.get('/', function(req, res){
-   res.redirect('index.html')
+app.post('/statistic', (req, res) => {
+    appendFileSync('statistics.txt', JSON.stringify(req.body) + '\n');
+    res.sendStatus(201);
 });
 
-app.post('/statistics', function(req, res){
-    fs.appendFileSync('statistics.txt', JSON.stringify(req.body) + '\n')
-    res.sendStatus(201)
-});
-
-app.listen(3000, function(){
-   console.log('Екземпляр запущено через порт 3000');
+app.listen(3000, function () {
+    console.log('Екземпляр запущено через порт 3000');
 });

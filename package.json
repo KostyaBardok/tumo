@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/KostyaBardok/tumo#readme",
   "dependencies": {
-    "express": "^4.18.1",
-    "socket.io": "^4.5.2"
+    "express": "^4.18.2"
   }
 }
