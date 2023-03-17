@@ -1,5 +1,0 @@
-{"commonBurst":3,"uniqBurst":0,"angryBurst":0,"score":3}
-{"commonBurst":3,"uniqBurst":0,"angryBurst":0,"score":3}
-{"commonBurst":3,"uniqBurst":0,"angryBurst":0,"score":3}
-{"commonBurst":3,"uniqBurst":0,"angryBurst":0,"score":0}
-{"commonBurst":3,"uniqBurst":0,"angryBurst":0,"score":0}
