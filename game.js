@@ -45,13 +45,8 @@ function mousePressed() {
     if (!isLooping()) {
         loop();
         Game.score = 0;
-        Game.countOfBlack = 0;
-        Game.countOfBlue = 0;
-        Game.countOfGreen = 0;
-        Game.countOfClick = 0;
-
         interval = setInterval(() => {
-            Game.sendStatistics();
+            Game.sendStats();
         }, 5000);
     }
     Game.countOfClick += 1;
@@ -59,34 +54,16 @@ function mousePressed() {
 }
 
 let interval = setInterval(() => {
-    Game.sendStatistics();
+    Game.sendStats();
 }, 5000);
 
 class Game {
     static balloons = [];
     static score = 0;
-    static countOfGreen = 0;
     static countOfBlue = 0;
+    static countOfGreen = 0;
     static countOfBlack = 0;
     static countOfClick = 0;
-
-    static sendStatistics() {
-        let stats = {
-            score: this.score,
-            countOfGreen: this.countOfGreen,
-            countOfBlue: this.countOfBlue,
-            countOfBlack: this.countOfBlack,
-            countOfClick: this.countOfClick,
-        };
-
-        fetch('/stats', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(stats),
-        });
-    }
 
     static addCommonBalloon() {
         let commonBalloon = new CommonBalloon('blue', 50);
@@ -109,6 +86,24 @@ class Game {
             if (distance <= balloon.size / 2) {
                 balloon.burst(index);
             }
+        });
+    }
+
+    static sendStats() {
+        const statistics = {
+            score: this.score,
+            countOfBlue: this.countOfBlue,
+            countOfGreen: this.countOfGreen,
+            countOfBlack: this.countOfBlack,
+            countOfClick: this.countOfClick,
+        };
+
+        fetch('/stats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(statistics),
         });
     }
 }
