@@ -1,1 +1,7 @@
-
+{"countOfBlue":4,"countOfGreen":1,"countOfBlack":2,"countOfMousePressed":7}
+{"countOfBlue":3,"countOfGreen":0,"countOfBlack":1,"countOfMousePressed":6}
+{"countOfBlue":8,"countOfGreen":3,"countOfBlack":2,"countOfMousePressed":16}
+{"countOfBlue":13,"countOfGreen":6,"countOfBlack":2,"countOfMousePressed":24}
+{"countOfBlue":21,"countOfGreen":9,"countOfBlack":2,"countOfMousePressed":35}
+{"countOfBlue":24,"countOfGreen":11,"countOfBlack":2,"countOfMousePressed":40}
+{"countOfBlue":24,"countOfGreen":11,"countOfBlack":2,"countOfMousePressed":40}

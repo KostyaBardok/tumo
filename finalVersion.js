@@ -40,7 +40,7 @@ function draw() {
         Game.addAngryBalloon();
     }
 }
-
+let interval;
 function mousePressed() {
     if (!isLooping()) {
         loop();
@@ -49,11 +49,12 @@ function mousePressed() {
             Game.sendStats();
         }, 5000);
     }
-    Game.countOfClick += 1;
+
     Game.checkIfBalloonBurst();
+    Game.countOfMousePressed += 1;
 }
 
-let interval = setInterval(() => {
+interval = setInterval(() => {
     Game.sendStats();
 }, 5000);
 
@@ -63,7 +64,7 @@ class Game {
     static countOfBlue = 0;
     static countOfGreen = 0;
     static countOfBlack = 0;
-    static countOfClick = 0;
+    static countOfMousePressed = 0;
 
     static addCommonBalloon() {
         let commonBalloon = new CommonBalloon('blue', 50);
@@ -90,12 +91,11 @@ class Game {
     }
 
     static sendStats() {
-        const statistics = {
-            score: this.score,
-            countOfBlue: this.countOfBlue,
-            countOfGreen: this.countOfGreen,
-            countOfBlack: this.countOfBlack,
-            countOfClick: this.countOfClick,
+        let obj = {
+            countOfBlue: Game.countOfBlue,
+            countOfGreen: Game.countOfGreen,
+            countOfBlack: Game.countOfBlack,
+            countOfMousePressed: Game.countOfMousePressed,
         };
 
         fetch('/stats', {
@@ -103,7 +103,7 @@ class Game {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(statistics),
+            body: JSON.stringify(obj),
         });
     }
 }
